@@ -1,0 +1,63 @@
+{% extends 'main.html' %}
+{% load static%}
+{% block title %} registration{% endblock title %}
+
+{% block body %}
+<div class="container my-1 p-2">
+    <div class="row p-2">
+        <div class="col-md-4 text-center border rounded bg-info p-3">
+            <img src="{% static 'images/bcarts.png' %}" class="img-fluid" alt="Responsive image">
+            <h3 class="my-3 font-italic">Register Now</h3>
+            <p>Please enter your valid information here. Otherwise, we will not be able to find you for your order. Make
+                sure all the information which you were given was correct.</p><br>
+            <p><b>Thank You So Much!</b></p>
+
+        </div>
+        <div class="col-md-8 border rounded bg-warning p-3">
+            <h3 class="text-center font-italic">Create An Account Here</h3>
+            <form method="POST" action="/register"> {% csrf_token %}
+                <div class="form-group">
+                    <label for="f_name">First Name</label>
+                    <input required type="text" class="form-control form-control-sm" name="f_name" id="f_name"
+                        placeholder="Enter First Name">
+                </div>
+                <div class="form-group">
+                    <label for="l_name">Last Name</label>
+                    <input required type="text" class="form-control form-control-sm" id="l_name" name="l_name"
+                        placeholder=" Enter Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone No.</label>
+                    <input required type="text" class="form-control form-control-sm" id="phone" name="phone"
+                        placeholder="Enter Phone ">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input required type="email" class="form-control form-control-sm" name="email" id="email"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input required type="password" class=" form-control form-control-sm" id="password" name="password"
+                        placeholder=" Enter Password">
+                </div>
+                <div class="form-group">
+                    <a href="/login" class="">Already have an account</a> 
+               
+                </div>
+                <button type="submit" class="btn btn-info">Create An Account</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
+
+
+
+{% block script %}
+{% endblock script %}

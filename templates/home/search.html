@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% block title %} search {% endblock title %}
+
+
+
+
+{% block body %}
+
+<div class="container my-4">
+    <h3 class="text-center"> Search Results:</h3>
+    <hr>
+     <!-- condition if search cant find any querry  -->
+    {% if products|length < 1 %}
+    <!--  <p>No Results Found. Please search Valid Query</p>  -->
+    <div class="container">
+        <p>Your search - <b>{{query}}</b> - did not match any documents.</p>
+        <p><b> Suggestions:</b></p>
+        <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general keywords.</li>
+            <li>Try fewer keywords.</li>
+        </ul>
+    </div>
+
+    {% endif %}
+
+    {% for i in products %}
+    <div class="container my-4">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary">{{i.price}}</strong>
+                <h3 class="mb-0">
+                    <a class="text-dark" href="#">{{i.name}}</a>
+                </h3>
+                <div class="mb-1 text-muted">{{i.pub_date}}</div>
+                <p class="card-text mb-auto">{{i.desc}}</p>
+                <!-- <a href="/Blog/{{i.slug}}">Continue reading</a> -->
+            </div>
+            <img src="/media/{{i.image}}" style="width:350px; height:auto"
+                class="col-xs-6 card-img-right flex-auto  d-md-block img-thumbnail img-fluid" alt="Responsive image">
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock body %}
+
+{% block script %}
+{% endblock script %}
